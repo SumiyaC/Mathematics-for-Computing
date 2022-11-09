@@ -1,0 +1,18 @@
+myExpression = input("Please enter an expression with variables h, r and f:")
+myExpression1 = input("Please enter an expression with variables h, r and f:")
+myExpression2 = input("Please enter an expression with variables h, r and f:")
+
+print("h         r           f      h and r    notf    (h and f) ^ (not f)")
+
+for h in range(0, 2):
+
+    for r in range(0, 2):
+
+        for f in range(0, 2):
+
+            result =  (myExpression)
+            result1 = (myExpression1)
+            result2 = (myExpression2)
+
+            print(bool(h),"   ", bool(r),"   ", bool(f),"   ", bool(eval(result)),"   ",  bool(eval(result1)),"   ",  bool(eval(result2)))
+ 
