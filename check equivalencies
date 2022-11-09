@@ -1,0 +1,19 @@
+p=True
+q=False
+
+e1=(input("Give a logical proposition with variable p and q: "))
+e2=(input("Give a logical proposition with variable p and q: "))
+
+print ("{:<8} {:<8} {:<15} {:<15}".format("p","q",e1,e2))
+print("______________________________________________")
+
+for p in range(2):
+    for q in range(2):
+        print("{:<8} {:<8} {:<15} {:<15}" .format(str(bool(p)), str(bool(q)),str(bool(eval(e1))),str(bool(eval(e2)))))
+
+        if str(bool(eval(e1)))==str(bool(eval(e2))):
+            print("The given logical propositions are equivalent")
+            print("______________________________________________")
+        else:
+            print("The given logical propositions are NOT equivalent")
+            print("______________________________________________")
