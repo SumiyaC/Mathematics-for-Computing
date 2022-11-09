@@ -1,0 +1,82 @@
+# 1
+import re
+namePattern = r"[a-z, A-Z]{2,10}"
+emailPattern = r"[a-z, A-Z]{2,10}(.){1}[a-z, A-Z]{2,10}(@centria.fi){1}"
+compiledNamePattern = re.compile(namePattern)
+compiledEmailPattern = re.compile(emailPattern)
+p=int(input("Enter the number of name & email pairs you want:"))
+for i in range(p):
+    studentName= input("Enter your name: ")
+    studentEmail = input("Enter your email for Centria: ")
+    NameMatch = compiledNamePattern.match(studentName)
+    NameMatch1 = compiledEmailPattern.match(studentEmail)
+
+    if NameMatch:
+        if NameMatch1:
+            if NameMatch.group() == studentName:
+                if NameMatch1.group()== studentEmail:
+                    pairs={studentName,studentEmail}
+                    print("Here is the pair number {} of students names & emails:" .format(i+1),pairs)
+                else:
+                    print("Wrongg!! Next time, Enter name & Email in correct format")
+            else:
+                print("Wrongg!! Next time,Enter name & Email in correct format")
+        else:
+            print("Wrongg!! Next time,Enter name & Email in correct format")
+    else:
+        print("Wrongg!! Next time,Enter name & Email in correct format")
+
+classs1=set()
+classs2=set()
+classs3=set()
+totalStudents=int(input("Enter the total number of students you want in each class:"))
+for i in range(totalStudents):
+    c=input("Enter the name of student {} of class 1:".format(i+1))
+    classs1.add(c)
+    d=input("Enter the name of student {} of class 2:".format(i+1))
+    classs2.add(d)
+    e=input("Enter the name of student {} of class 3:".format(i+1))
+    classs3.add(e)
+
+studentcheck=input("Enter the name of the student you want to check from class 1:")
+if studentcheck in classs1:
+    print("The student named {} is available in class 1".format(studentcheck))
+else:
+    print("The student named {} is NOT available in class 1".format(studentcheck))
+
+inter_section=classs1 & classs2 & classs3
+print("Intersection of the classes is:",inter_section)
+
+uni_on=classs1 | classs2 | classs3
+print("Union of the classes is:",uni_on)
+
+diffe_rence=classs1 - classs2
+print("Difference between class 1 and class 2 is:",diffe_rence)
+
+if classs1 < classs2:
+    print("class 1 is a PROPER subset of class2")
+elif classs1 <= classs2:
+    print("class 1 is a IMPROPER subset of class2")
+else:
+    print("class 1 is NOT a subset of class2")
+
+
+
+#2
+from itertools import combinations
+students=[]
+colours=[]
+s=int(input("Enter the total number of students for using in determining combination process:"))
+for i in range(s):
+    stnd=input("Enter the student name:")
+    students.append(stnd)
+    clrs=input("Enter the colours name:")
+    colours.append(clrs)
+    def merge(students, colours):
+        return [[a] + [b] for (a, b) in zip(students, colours)]
+
+nameAndColours=merge(students, colours)
+com = combinations(nameAndColours,1)
+print("The combinations are:")
+for i in com:
+    print(i,end=" ")
