@@ -1,0 +1,35 @@
+n=int(input("Enter the number of variables:"))
+val=[]
+headings=[]
+for x in range(n):
+    n1 = (input("Enter the variable names accordingly:"))
+    headings.append(n1)
+    val.append(n1)
+for x in range(n):
+    exec(val[x]+ '=True')
+
+e1=(input("Give a logical proposition with arbitrary number of variables : "))
+e2 = (input("Give a logical proposition with arbitrary number of variables: "))
+
+for x in range(n):
+    print("{:<10}".format(headings[x]), end=" ")
+print("{:<10}".format(e1), end=" ")
+print("{:<10}".format(e2))
+
+for y in range(0,2**n):
+    for x in range(n):
+
+        if (y % 2**x == 0):
+            p=not val[x]
+            val[x]=p
+
+        print("{:<10}".format(str(bool(val[x]))),end=" ")
+    print("{:<10} {:<10}".format(str(bool(eval(e1))), str(bool(eval(e2)))))
+
+if str(bool(eval(e1))) == str(bool(eval(e2))):
+    print("______________________________________________")
+    print("The given logical propositions are equivalent")
+
+else:
+    print("______________________________________________")
+    print("The given logical propositions are NOT equivalent")
