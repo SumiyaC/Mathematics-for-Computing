@@ -1,0 +1,49 @@
+n1 = int(input("Enter the 1st value:"))
+n2 = int(input("Enter the 2nd value:"))
+
+a=(input("What operation do you want to perform(summation/difference/multiplication/division)?:"))
+
+def summ(n1,n2):
+    while n2!=0:
+        carry = n1 & n2
+        n1 = n1 ^ n2
+        n2 = carry << 1
+    return n1
+
+if a=="summation":
+    q=summ(n1,n2)
+    print("Summation of the given numbers:",q)
+
+
+def sub(n1,n2):
+    borrow = (~n2)
+    b=1
+    c=summ(borrow,b)
+    c2=summ(n1,c)
+    return c2
+
+if a=="difference":
+    w=sub(n1,n2)
+    print("difference of the given numbers:",w)
+
+def mul(n1,n2):
+    d = 0
+    while n2 > 0:
+        if (n2 & 1):
+            d = summ(d,n1)
+            n1 = n1 << 1
+            n2 = n2 >> 1
+    return d
+if a=="multiplication":
+    e=mul(n1,n2)
+    print("Multiplication of the given numbers:", e)
+
+def div(n1,n2):
+    d = n2
+    while d >= n2:
+        d =sub(n1,n2)
+        n1 = d
+    return d
+if a=="division":
+    r=div(n1,n2)
+    print("Division of the given numbers:", r)
